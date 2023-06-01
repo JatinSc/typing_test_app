@@ -9,13 +9,11 @@
 
 body {
   min-height: 100vh;
-  /* width: 100%; */
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Rubik', sans-serif;
   margin-inline: 10px;
-  margin: 10px;
   background: rgb(0,151,255);
   background: linear-gradient(0deg, rgba(0,151,255,0.7512254901960784) 18%, rgba(244,154,69,0.8703703703703703) 92%);
 }
