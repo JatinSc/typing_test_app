@@ -77,7 +77,7 @@ const App = () => {
     setButtonState(Array(key.length).fill("default"));
     setIndex(0);
     const totalSeconds = time.min * 60 + time.sec;
-    const speed = Math.round((correct / totalSeconds) * 60); // Calculate typing speed in characters per minute (CPM)
+    const speed = Math.round((correct/ 5 / totalSeconds) * 60); // Calculate typing speed in characters per minute (CPM)
     setSpeed(speed);
     setTime({ min: 0, sec: 0 });
   };
