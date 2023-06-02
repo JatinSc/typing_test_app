@@ -192,12 +192,12 @@ input:hover{
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
-  background-color: rgb(44, 44, 44);
-  color: #ff0059;
+  background-color: rgb(26, 25, 25);
+  color: #a0063c;
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
- border: 1px solid rgb(218, 28, 59);
+ border: 1px solid #9f0842;
   /* Position the tooltip text - see examples below! */
   position: absolute;
   margin-top: 35px;
