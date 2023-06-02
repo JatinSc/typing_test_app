@@ -197,7 +197,8 @@ input:hover{
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
- border: 1px solid #9f0842;
+  box-shadow: 5px 5px 40px 5px rgba(67, 32, 40, 0.5);;
+ /* border: 1px solid #9f0842; */
   /* Position the tooltip text - see examples below! */
   position: absolute;
   margin-top: 35px;
