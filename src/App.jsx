@@ -83,6 +83,7 @@ const App = () => {
   };
 
   const restartTest = () =>{
+    setStartTime(false);
     setKey(key.sort(() => 0.5 - Math.random()));
     setEnterKey("");
     setButtonState(Array(key.length).fill("default"));
@@ -98,7 +99,7 @@ const App = () => {
       <div className="header">
         <p>{`Time : ${time.min} min  ${time.sec} sec`}</p>
         <small>{"time limit : 5min"}</small>
-        <p style={{ color: "green" }}>{`Correct : ${correct}`}</p>
+        <p style={{ color: "rgb(239, 33, 116)" }}>{`Correct : ${correct}`}</p>
         <p style={{ color: "red" }}>{`Wrong : ${wrong}`}</p>
       </div>
       <div className="keys">
