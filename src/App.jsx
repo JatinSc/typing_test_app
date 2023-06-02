@@ -72,12 +72,12 @@ const App = () => {
   }, [startTime, correct, time]);
 
   const endTest = () => {
-    isPause(false)
     setStartTime(false);
     setEnterKey("");
     setButtonState(Array(key.length).fill("default"));
     setIndex(0);
     setTime({ min: 0, sec: 0 });
+    setIsPause(false)
   };
 
   const restartTest = () => {
@@ -89,6 +89,7 @@ const App = () => {
     setTime({ min: 0, sec: 0 });
     setCorrect(0);
     setWrong(0);
+    setIsPause(false)
   };
   return (
     <main className="container">
@@ -131,6 +132,7 @@ const App = () => {
         ))}
       </div>
       <input
+        autoFocus
         placeholder="start typing"
         onChange={(e) => checkCharacters(e.target.value)}
         value={enterKey}
