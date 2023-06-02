@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
 
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+
 * {
   padding: 0;
   margin: 0;
@@ -19,7 +22,19 @@ body {
   /* background: rgb(0,151,255);
   background: linear-gradient(0deg, rgba(0,151,255,0.7512254901960784) 18%, rgba(244,154,69,0.8703703703703703) 92%); */
 }
-
+.head{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+}
+i{
+  font-size: 25px;
+  color: #9f0842;
+  cursor: pointer;
+}
 .container {
   width: min(70ch, 100% -4rem);
   margin-inline: auto;
@@ -41,6 +56,7 @@ h1 {
   text-transform: capitalize;
   letter-spacing: 2px;
   word-spacing: 5px;
+  text-align: center;
 }
 
 .keys {
@@ -140,7 +156,7 @@ input:hover{
 
 .header {
   text-align: center;
-  color: rgb(137, 6, 54);
+  color: rgb(171, 9, 69);
   font-weight: 500;
   gap: 5px;
   /* background-color: white; */
@@ -156,10 +172,39 @@ input:hover{
 
 .results {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+
   gap: 10px;
   justify-content: center;
   align-items: center;
   font-weight: 500;
   color: #f8f8f8;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: rgb(44, 44, 44);
+  color: #ff0059;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ border: 1px solid rgb(218, 28, 59);
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  margin-top: 35px;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }

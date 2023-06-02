@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Alert from "react-bootstrap/Alert";
 
 const App = () => {
   const [key, setKey] = useState(
@@ -8,15 +9,14 @@ const App = () => {
   const [buttonState, setButtonState] = useState(
     Array(key.length).fill("default")
   );
+  const [show, setShow] = useState(true);
+  const [isPause, setIsPause] = useState(false);
   const [enterKey, setEnterKey] = useState();
   const [correct, setCorrect] = useState(0);
   const [wrong, setWrong] = useState(0);
   const [index, setIndex] = useState(0);
   const [time, setTime] = useState({ min: 0, sec: 0 });
   const [startTime, setStartTime] = useState(false);
-  const [speed, setSpeed] = useState(0);
-  const [isRestarted, setIsRestarted] = useState(false);
-
 
   const checkCharacters = (alphabets) => {
     setEnterKey(alphabets);
@@ -39,7 +39,7 @@ const App = () => {
         setEnterKey("");
         setButtonState(Array(key.length).fill("default"));
         setIndex(0);
-      }, 500);
+      }, 300);
     }
     setIndex((prev) => prev + 1);
     // console.log(word.split("")[word.length - 1]);
@@ -59,7 +59,7 @@ const App = () => {
           }
 
           if (updatedMin === 5) {
-            setSpeed(Math.round(correct / 5 / (prevTime.sec / 60)));
+            endTest();
             clearInterval(interval);
           }
           return { min: updatedMin, sec: updatedSec };
@@ -76,26 +76,46 @@ const App = () => {
     setEnterKey("");
     setButtonState(Array(key.length).fill("default"));
     setIndex(0);
-    const totalSeconds = time.min * 60 + time.sec;
-    const speed = Math.round((correct/ 5 / totalSeconds) * 60); // Calculate typing speed in characters per minute (CPM)
-    setSpeed(speed);
     setTime({ min: 0, sec: 0 });
   };
 
-  const restartTest = () =>{
+  const restartTest = () => {
     setStartTime(false);
     setKey(key.sort(() => 0.5 - Math.random()));
     setEnterKey("");
     setButtonState(Array(key.length).fill("default"));
     setIndex(0);
     setTime({ min: 0, sec: 0 });
-    setSpeed(0);
     setCorrect(0);
     setWrong(0);
-  }
+  };
   return (
     <main className="container">
-      <h1>Typing Test</h1>
+      <div className="head">
+        <div class="tooltip">
+          <span class="tooltiptext">Case sensitive</span>
+          <i className="bi bi-info-circle"></i>
+        </div>
+
+        <h1>Typing Test</h1>
+        {time.sec <= 0 ? (
+          <i class="bi bi-hearts"></i>
+        ) : isPause ? (
+          <i
+            class="bi bi-caret-right-square"
+            onClick={() => {
+              setIsPause(false), setStartTime(true);
+            }}
+          ></i>
+        ) : (
+          <i
+            class="bi bi-pause-circle"
+            onClick={() => {
+              setIsPause(true), setStartTime(false);
+            }}
+          ></i>
+        )}
+      </div>
       <div className="header">
         <p>{`Time : ${time.min} min  ${time.sec} sec`}</p>
         <small>{"time limit : 5min"}</small>
@@ -114,16 +134,27 @@ const App = () => {
         onChange={(e) => checkCharacters(e.target.value)}
         value={enterKey}
       ></input>
-      <div style={{display:"flex",gap:"20px"}}>
-      <button className="button" onClick={() => restartTest()}>
-        Restart
-      </button>
-      <button className="button" disabled={time.sec<=0} onClick={() => endTest()}>
-        Calculate
-      </button>
+      <div style={{ display: "flex", gap: "20px" }}>
+        <button className="button" onClick={() => restartTest()}>
+          Restart
+        </button>
+        <button
+          className="button"
+          disabled={time.sec <= 0}
+          onClick={() => endTest()}
+        >
+          End
+        </button>
       </div>
       <div className="results">
-        {speed > 0 ? <p>speed : {speed} CPM</p>:<p>speed : CPM</p>}</div>
+        <p>{`accuracy : ${
+          correct + wrong > 1
+            ? ((correct / (correct + wrong)) * 100).toFixed(2)
+            : "0"
+        } %`}</p>
+        <p>{`Total keys Pressed : ${correct+wrong}`}</p>
+      </div>
+      <div></div>
     </main>
   );
 };
