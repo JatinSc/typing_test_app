@@ -79,7 +79,7 @@ h1 {
 }
 
 .container input {
-  letter-spacing: 5px;
+  letter-spacing: 1px;
   outline: none;
   border: none;
   background-color: rgb(252, 198, 213);

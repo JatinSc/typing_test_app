@@ -108,14 +108,14 @@ const App = () => {
           <i
             class="bi bi-caret-right-square"
             onClick={() => {
-              setIsPause(false), setStartTime(true);
+              setIsPause(false), setStartTime(true),setEnd(false)
             }}
           ></i>
         ) : (
           <i
             class="bi bi-pause-circle"
             onClick={() => {
-              setIsPause(true), setStartTime(false);
+              setIsPause(true), setStartTime(false),setEnd(true)
             }}
           ></i>
         )}
@@ -134,9 +134,10 @@ const App = () => {
         ))}
       </div>
       <input
+        maxlength="8"
         disabled={end}
         autoFocus
-        placeholder="start typing"
+        placeholder={end?"Restart or continue.....":"start typing...."}
         onChange={(e) => checkCharacters(e.target.value)}
         value={enterKey}
       ></input>
