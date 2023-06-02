@@ -9,7 +9,7 @@ const App = () => {
   const [buttonState, setButtonState] = useState(
     Array(key.length).fill("default")
   );
-  const [show, setShow] = useState(true);
+  const [end, setEnd] = useState(false);
   const [isPause, setIsPause] = useState(false);
   const [enterKey, setEnterKey] = useState();
   const [correct, setCorrect] = useState(0);
@@ -72,6 +72,7 @@ const App = () => {
   }, [startTime, correct, time]);
 
   const endTest = () => {
+    setEnd(true)
     setStartTime(false);
     setEnterKey("");
     setButtonState(Array(key.length).fill("default"));
@@ -81,6 +82,7 @@ const App = () => {
   };
 
   const restartTest = () => {
+    setEnd(false)
     setStartTime(false);
     setKey(key.sort(() => 0.5 - Math.random()));
     setEnterKey("");
@@ -132,6 +134,7 @@ const App = () => {
         ))}
       </div>
       <input
+        disabled={end}
         autoFocus
         placeholder="start typing"
         onChange={(e) => checkCharacters(e.target.value)}
