@@ -72,6 +72,7 @@ const App = () => {
   }, [startTime, correct, time]);
 
   const endTest = () => {
+    isPause(false)
     setStartTime(false);
     setEnterKey("");
     setButtonState(Array(key.length).fill("default"));
