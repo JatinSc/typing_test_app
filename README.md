@@ -1,5 +1,5 @@
 # typing_test_app
-https://jatins-typing-speedtest-app.onrender.com
+deployed link :- https://jatins-typing-speedtest-app.onrender.com
 #for installation in local
 1.npm install
 2.npm run dev
